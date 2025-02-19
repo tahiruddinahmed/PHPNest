@@ -1,12 +1,12 @@
 <?php 
 
-class Controller {
+class  ProductsController {
     private $model;
 
     public function __construct()
     {
-        require 'Model.php';
-        $this->model = new Model();
+        require 'src/Models.php/Product.php';
+        $this->model = new Product();
     }
 
     public function index() {

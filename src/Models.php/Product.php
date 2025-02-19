@@ -1,6 +1,6 @@
 <?php
 
-class Model {
+class Product {
 
     public function getData() {
         $dsn = "mysql:host=localhost;dbname=learnsql;port=3306";

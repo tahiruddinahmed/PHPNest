@@ -1,8 +1,8 @@
 <?php 
 
 require 'helpers.php';
-require 'Controller.php';
+require 'src/Controllers/ProductsController.php';
 
-$controller = new Controller;
+$controller = new ProductsController;
 
 $controller->index();
