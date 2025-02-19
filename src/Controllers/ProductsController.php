@@ -12,6 +12,10 @@ class  ProductsController {
     public function index() {
         $persons = $this->model->getData();
 
-        require 'View.php';
+        require 'Views/product.php';
+    }
+
+    public function show() {
+        require 'Views/product-show.php';
     }
 }
