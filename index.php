@@ -2,26 +2,15 @@
 
 require 'helpers.php';
 
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$action = $_GET['action'] ?? '';
-$controller = $_GET['controller'] ?? '';
+require 'src/Router.php';
 
+$router = new Router;
 
-if($controller === 'product') {
+$router->add("/home/index", ['controller' => 'HomeController', "action" => 'index']);
+$router->add("/products", ['controller' => 'ProductsController', "action" => 'index']);
+$router->add("/", ['controller' => 'HomeController', "action" => 'index']);
 
-    require 'src/Controllers/ProductsController.php';
-    $controllerObj = new ProductsController;
+$params = $router->route($path);
 
-} elseif($controller === 'home') {
-
-    require 'src/Controllers/HomeController.php';
-    $controllerObj = new HomeController;
-}
-
-
-// print_die($action);
-if($action === 'index') {
-    $controllerObj->index();
-} else if($action === 'show') {
-    $controllerObj->show();
-}
