@@ -1,5 +1,7 @@
 <?php 
 
+namespace Framework;
+
 class Router {
     private array $routes = [];
 
@@ -14,16 +16,17 @@ class Router {
         foreach($this->routes as $route) {
             if($route['path'] === $path) {
                 $params = $route['params'];
-                $controller = $params['controller'];
+                $controller = "App\Controllers\\" . $params['controller'];
                 $action = $params['action'];
-                require "src/Controllers/{$controller}.php";
+                // require "src/Controllers/{$controller}.php";
 
                 $controllerObj = new $controller;
                 $controllerObj->$action();
+                exit;
             }
-            http_response_code(404);
-            exit("Page Not Found 404");
         }
+        http_response_code(404);
+        exit("Page Not Found 404");
 
     }
 }
